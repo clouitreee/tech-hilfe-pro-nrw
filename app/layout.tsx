@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import SkipLink from "@/components/SkipLink";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -73,6 +74,7 @@ export default function RootLayout({
         <SchemaMarkup />
       </head>
       <body className="font-sans">
+        <SkipLink />
         {children}
         <CookieConsentBanner />
       </body>

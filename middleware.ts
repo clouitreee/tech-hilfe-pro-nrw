@@ -5,12 +5,13 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   // Content Security Policy - Restrictive with Calendly support
+  // Note: 'unsafe-inline' for scripts is required for Calendly and static generation
   const csp = [
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline' https://assets.calendly.com",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https:",
-    "connect-src 'self' https://api.calendly.com https://*.supabase.co https://api.stripe.com",
+    "connect-src 'self' https://api.calendly.com https://*.supabase.co https://api.stripe.com https://api.resend.com",
     "frame-src 'self' https://calendly.com https://js.stripe.com",
     "font-src 'self' data:",
     "object-src 'none'",
