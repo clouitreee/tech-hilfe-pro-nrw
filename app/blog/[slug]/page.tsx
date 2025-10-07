@@ -47,8 +47,9 @@ async function getBlogPost(slug: string) {
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = await getBlogPost(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   if (!post) {
     return {
@@ -77,11 +78,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       publishedTime: post.date,
       authors: ['Tech Hilfe Pro Team'],
       locale: 'de_DE',
-      url: `https://techhilfepro.de/blog/${params.slug}`,
+      url: `https://techhilfepro.de/blog/${slug}`,
       siteName: 'Tech Hilfe Pro',
     },
     alternates: {
-      canonical: `https://techhilfepro.de/blog/${params.slug}`,
+      canonical: `https://techhilfepro.de/blog/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -91,8 +92,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getBlogPost(params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   if (!post) {
     notFound();

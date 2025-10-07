@@ -2,8 +2,20 @@ import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
+// Client for browser/public operations (read-only)
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Server-side client with service role for write operations
+export const supabaseAdmin = supabaseServiceRoleKey
+  ? createClient(supabaseUrl, supabaseServiceRoleKey, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    })
+  : null;
 
 // Database Types
 export type Lead = {
@@ -41,7 +53,11 @@ export type BlogPost = {
 
 // Helper functions
 export async function createLead(data: Omit<Lead, 'id' | 'created_at' | 'status'>) {
-  const { data: lead, error } = await supabase
+  if (!supabaseAdmin) {
+    throw new Error('Supabase service role key not configured');
+  }
+
+  const { data: lead, error } = await supabaseAdmin
     .from('leads')
     .insert([{ ...data, status: 'new' }])
     .select()

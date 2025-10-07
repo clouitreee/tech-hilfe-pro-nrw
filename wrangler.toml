@@ -1,5 +1,6 @@
 name = "tech-hilfe-pro-nrw"
 compatibility_date = "2025-10-07"
+compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
 [env.production]
