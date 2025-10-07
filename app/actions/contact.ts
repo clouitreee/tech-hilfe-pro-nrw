@@ -2,6 +2,7 @@
 
 import { Resend } from 'resend';
 import { createLead } from '@/lib/supabase/client';
+import { headers } from 'next/headers';
 
 // Only initialize Resend if API key is available
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
@@ -12,17 +13,58 @@ export interface ContactFormData {
   phone?: string;
   serviceInterest: string;
   message: string;
+  honeypot?: string; // Honeypot field
 }
 
 export async function submitContactForm(data: ContactFormData) {
   try {
-    // 1. Save to Supabase
+    // 0. Honeypot check - silent rejection
+    if (data.honeypot && data.honeypot.trim() !== '') {
+      // Pretend success to bots
+      return { success: true };
+    }
+
+    // 1. Origin validation
+    const headersList = await headers();
+    const origin = headersList.get('origin') || headersList.get('referer') || '';
+    const allowedOrigins = [
+      'https://techhilfepro.de',
+      'https://www.techhilfepro.de',
+      'http://localhost:3000',
+      'http://127.0.0.1:3000'
+    ];
+    
+    const isAllowed = allowedOrigins.some(allowed => origin.startsWith(allowed));
+    if (!isAllowed && origin !== '') {
+      console.error('Forbidden origin:', origin);
+      return { success: false, error: 'Forbidden origin' };
+    }
+
+    // 2. Input validation and sanitization
+    const name = String(data.name || '').trim().slice(0, 200);
+    const email = String(data.email || '').trim().slice(0, 200);
+    const phone = data.phone ? String(data.phone).trim().slice(0, 50) : undefined;
+    const serviceInterest = String(data.serviceInterest || '').slice(0, 100);
+    const message = String(data.message || '').trim().slice(0, 5000);
+
+    // Basic validation
+    if (!name || !email || !message) {
+      return { success: false, error: 'Missing required fields' };
+    }
+
+    // Email format validation (simple)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return { success: false, error: 'Invalid email format' };
+    }
+
+    // 3. Save to Supabase via service role
     await createLead({
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-      service_interest: data.serviceInterest,
-      message: data.message,
+      name,
+      email,
+      phone,
+      service_interest: serviceInterest,
+      message,
     });
 
     // 2. Send email notification via Resend

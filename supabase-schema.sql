@@ -96,10 +96,9 @@ CREATE POLICY "Service role has full access to blog posts"
   ON blog_posts FOR ALL
   USING (auth.role() = 'service_role');
 
--- Anonymous users can insert leads (contact form)
-CREATE POLICY "Anyone can insert leads"
-  ON leads FOR INSERT
-  WITH CHECK (true);
+-- REMOVED: Anonymous insert policy
+-- All lead inserts must go through server actions with service_role
+-- This prevents spam and ensures server-side validation
 
 -- Comments for documentation
 COMMENT ON TABLE leads IS 'Stores contact form submissions and lead information';
