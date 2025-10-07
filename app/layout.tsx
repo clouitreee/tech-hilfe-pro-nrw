@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
+import SchemaMarkup from "@/components/SchemaMarkup";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,28 +18,47 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "Tech Hilfe Pro NRW - Ihr persönlicher IT-Partner",
-    template: "%s | Tech Hilfe Pro NRW",
+    default: "IT-Support für Privatkunden & Kleinunternehmen in Köln | Tech Hilfe Pro",
+    template: "%s | Tech Hilfe Pro",
   },
   description:
-    "Professioneller IT-Support für Privatkunden und Kleinunternehmen in NRW. Sicher, verständlich und immer für Sie da.",
+    "Professioneller IT-Support in Köln, Düsseldorf und NRW. Persönliche Betreuung für Senioren, Privatkunden und Kleinunternehmen. Remote & Vor-Ort-Service. ☎ +49 15565029989",
   keywords: [
-    "IT-Support NRW",
+    "IT-Support Köln",
     "Computer-Hilfe Köln",
     "IT-Service Düsseldorf",
+    "PC-Hilfe Neuss",
+    "IT-Beratung NRW",
     "Senioren PC-Hilfe",
+    "Kleinunternehmen IT-Support",
+    "Remote IT-Support",
+    "Vor-Ort IT-Service",
+    "Digitalisierung Köln",
+    "Cybersecurity NRW",
+    "Cloud-Services Köln"
   ],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://techhilfepro.de"),
   openGraph: {
     type: "website",
     locale: "de_DE",
-    url: "/",
-    title: "Tech Hilfe Pro NRW - Ihr persönlicher IT-Partner",
-    siteName: "Tech Hilfe Pro NRW",
+    url: "https://techhilfepro.de",
+    title: "IT-Support für Privatkunden & Kleinunternehmen in Köln | Tech Hilfe Pro",
+    description: "Professioneller IT-Support in Köln, Düsseldorf und NRW. Persönliche Betreuung für Senioren, Privatkunden und Kleinunternehmen.",
+    siteName: "Tech Hilfe Pro",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: "https://techhilfepro.de",
   },
 };
 
@@ -49,6 +69,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        <SchemaMarkup />
+      </head>
       <body className="font-sans">
         {children}
         <CookieConsentBanner />
