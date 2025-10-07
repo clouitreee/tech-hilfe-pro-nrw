@@ -25,7 +25,7 @@ export default function AGBPage() {
 
                 <h2 className="text-primary">1. Geltungsbereich</h2>
                 <p>
-                  Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen der Tech Hilfe Pro NRW (nachfolgend "Anbieter") und ihren Kunden (nachfolgend "Kunde") über die Erbringung von IT-Dienstleistungen und den Abschluss von Abonnement-Verträgen.
+                  Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen Tech Hilfe Pro, Inhaber José Carlos Martin Lache (nachfolgend "Anbieter") und ihren Kunden (nachfolgend "Kunde") über die Erbringung von IT-Dienstleistungen und den Abschluss von Abonnement-Verträgen.
                 </p>
 
                 <h2 className="text-primary">2. Vertragsgegenstand</h2>
@@ -67,6 +67,13 @@ export default function AGBPage() {
                 <p>
                   Es gilt das Recht der Bundesrepublik Deutschland. Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist, soweit gesetzlich zulässig, der Sitz des Anbieters. Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.
                 </p>
+
+                <div className="mt-8 p-6 bg-secondary/10 rounded-lg border-l-4 border-secondary">
+                  <p className="font-semibold text-primary mb-2">Hinweis zur Umsatzsteuer:</p>
+                  <p className="text-sm">
+                    Alle angegebenen Preise sind Endpreise. Gemäß § 19 UStG erheben wir keine Umsatzsteuer und weisen diese daher auch nicht aus.
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>

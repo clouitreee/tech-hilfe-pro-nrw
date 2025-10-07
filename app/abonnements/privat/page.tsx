@@ -230,6 +230,17 @@ export default function PrivateSubscriptionsPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* Kleinunternehmer Notice */}
+        <section className="section bg-neutral-50">
+          <div className="container-custom">
+            <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg border-l-4 border-secondary shadow-sm">
+              <p className="text-sm text-neutral-600 text-center">
+                <strong className="text-primary">Hinweis zur Umsatzsteuer:</strong> Alle angegebenen Preise sind Endpreise. Gemäß § 19 UStG erheben wir keine Umsatzsteuer und weisen diese daher auch nicht aus.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

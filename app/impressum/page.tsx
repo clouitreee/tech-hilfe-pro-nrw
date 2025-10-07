@@ -23,28 +23,27 @@ export default function ImpressumPage() {
               <div className="prose prose-lg max-w-none text-neutral-700">
                 <h2 className="text-primary">Angaben gemäß § 5 TMG</h2>
                 <p>
-                  Tech Hilfe Pro NRW (Arbeitstitel)<br />
-                  [Name des Inhabers/Geschäftsführers]<br />
-                  [Straße und Hausnummer]<br />
-                  [PLZ und Ort, z.B. 41460 Neuss]
+                  Tech Hilfe Pro<br />
+                  Inhaber: José Carlos Martin Lache<br />
+                  [Bitte trage hier deine vollständige Geschäftsadresse ein]
                 </p>
 
                 <h2 className="text-primary">Kontakt</h2>
                 <p>
-                  Telefon: [Ihre Telefonnummer]<br />
-                  E-Mail: [Ihre E-Mail-Adresse]
+                  Telefon: <a href="tel:+4915565029989" className="text-secondary hover:underline">+49 15565029989</a><br />
+                  E-Mail: <a href="mailto:info@techhilfepro.de" className="text-secondary hover:underline">info@techhilfepro.de</a><br />
+                  Webseite: <a href="https://techhilfepro.de" className="text-secondary hover:underline">https://techhilfepro.de</a>
                 </p>
 
-                <h2 className="text-primary">Umsatzsteuer-ID</h2>
+                <h2 className="text-primary">Umsatzsteuer</h2>
                 <p>
-                  Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-                  [Ihre USt-IdNr.]
+                  Als Kleinunternehmer im Sinne von § 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet und ausgewiesen.
                 </p>
 
                 <h2 className="text-primary">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
                 <p>
-                  [Name des Verantwortlichen]<br />
-                  [Anschrift des Verantwortlichen]
+                  José Carlos Martin Lache<br />
+                  [Bitte trage hier deine vollständige Geschäftsadresse ein]
                 </p>
 
                 <h2 className="text-primary">Haftungsausschluss (Disclaimer)</h2>
