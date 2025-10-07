@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function RootLayout({
     <html lang="de" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans">
         {children}
+        <CookieConsentBanner />
       </body>
     </html>
   );

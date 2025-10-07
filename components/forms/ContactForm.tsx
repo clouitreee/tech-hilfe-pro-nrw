@@ -13,6 +13,7 @@ export default function ContactForm() {
     serviceInterest: '',
     message: '',
     gdprConsent: false,
+    website: '', // Honeypot field - should remain empty
   });
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -22,6 +23,13 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('loading');
     setErrorMessage('');
+
+    // Honeypot spam protection - if filled, silently reject
+    if (formData.website) {
+      // Pretend success to the bot
+      setStatus('success');
+      return;
+    }
 
     if (!formData.gdprConsent) {
       setStatus('error');
@@ -46,6 +54,7 @@ export default function ContactForm() {
         serviceInterest: '',
         message: '',
         gdprConsent: false,
+        website: '',
       });
     } catch (error) {
       setStatus('error');
@@ -191,6 +200,20 @@ export default function ContactForm() {
           rows={5}
           className="form-input"
           placeholder="Beschreiben Sie bitte Ihr Anliegen..."
+        />
+      </div>
+
+      {/* Honeypot field - hidden from users, visible to bots */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Website (bitte leer lassen)</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          value={formData.website}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
         />
       </div>
 
