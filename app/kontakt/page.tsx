@@ -72,10 +72,10 @@ export default function ContactPage() {
                         Telefon
                       </h3>
                       <a
-                        href="tel:+49123456789"
+                        href="tel:+4915565029989"
                         className="text-neutral-600 hover:text-secondary transition-colors"
                       >
-                        +49 (0) 123 456789
+                        +49 15565029989
                       </a>
                       <p className="text-sm text-neutral-500 mt-1">
                         Mo-Fr: 9:00 - 18:00 Uhr
@@ -105,10 +105,10 @@ export default function ContactPage() {
                         E-Mail
                       </h3>
                       <a
-                        href="mailto:info@techhilfepro-nrw.de"
+                        href="mailto:info@techhilfepro.de"
                         className="text-neutral-600 hover:text-secondary transition-colors"
                       >
-                        info@techhilfepro-nrw.de
+                        info@techhilfepro.de
                       </a>
                       <p className="text-sm text-neutral-500 mt-1">
                         Antwort innerhalb von 24 Stunden
@@ -161,7 +161,7 @@ export default function ContactPage() {
                     Bei dringenden Problemen erreichen Sie uns telefonisch. Für allgemeine Anfragen nutzen Sie bitte das Kontaktformular.
                   </p>
                   <a
-                    href="tel:+49123456789"
+                    href="tel:+4915565029989"
                     className="inline-flex items-center gap-2 text-secondary hover:text-secondary-dark font-medium transition-colors"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
