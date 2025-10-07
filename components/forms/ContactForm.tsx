@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
-import { createLead } from '@/lib/supabase/client';
+import { submitContactForm } from '@/app/actions/contact';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -38,24 +38,29 @@ export default function ContactForm() {
     }
 
     try {
-      await createLead({
+      // Use server action that saves to Supabase AND sends email notification
+      const result = await submitContactForm({
         name: formData.name,
         email: formData.email,
         phone: formData.phone || undefined,
-        service_interest: formData.serviceInterest,
+        serviceInterest: formData.serviceInterest,
         message: formData.message,
       });
 
-      setStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        serviceInterest: '',
-        message: '',
-        gdprConsent: false,
-        website: '',
-      });
+      if (result.success) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          serviceInterest: '',
+          message: '',
+          gdprConsent: false,
+          website: '',
+        });
+      } else {
+        throw new Error(result.error);
+      }
     } catch (error) {
       setStatus('error');
       setErrorMessage('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
