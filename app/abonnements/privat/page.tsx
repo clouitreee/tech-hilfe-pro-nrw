@@ -97,27 +97,27 @@ export default function PrivateSubscriptionsPage() {
                     </div>
                   )}
 
-                  <div className="p-8">
+                  <div className="p-8 flex flex-col h-full">
                     {/* Plan Header */}
                     <div className="mb-6">
-                      <h3 className="text-2xl font-display font-bold text-primary mb-2">
+                      <h3 className="text-2xl font-display font-bold text-primary mb-2 min-h-[64px] flex items-center">
                         {plan.name}
                       </h3>
-                      <div className="flex items-baseline gap-2 mb-4">
+                      <div className="flex items-baseline gap-2 mb-4 min-h-[60px]">
                         <span className="text-5xl font-bold text-primary">
                           €{plan.price?.toFixed(2)}
                         </span>
                         <span className="text-neutral-500">/ Monat</span>
                       </div>
-                      <p className="text-neutral-600 text-sm leading-relaxed">
+                      <p className="text-neutral-600 text-sm leading-relaxed min-h-[60px]">
                         {plan.id === 'private_basis'
                           ? 'Die Grundsicherung für Ihren digitalen Alltag. Wir halten Ihre Technik im Hintergrund fit und sicher.'
                           : 'Das Rundum-sorglos-Paket für die ganze Familie. Maximale Sicherheit und persönlicher Service, wann immer Sie ihn brauchen.'}
                       </p>
                     </div>
 
-                    {/* Features */}
-                    <div className="mb-8">
+                    {/* Features - flex-grow to push button to bottom */}
+                    <div className="mb-8 flex-grow">
                       <ul className="space-y-3">
                         {plan.features.map((feature, i) => (
                           <li key={i} className="flex items-start gap-3">
@@ -140,14 +140,16 @@ export default function PrivateSubscriptionsPage() {
                       </ul>
                     </div>
 
-                    {/* CTA Button */}
-                    <Button
-                      variant={'popular' in plan && plan.popular ? 'primary' : 'outline'}
-                      fullWidth
-                      onClick={() => handleSubscribe(plan.id)}
-                    >
-                      Jetzt abonnieren
-                    </Button>
+                    {/* CTA Button - always at bottom */}
+                    <div className="mt-auto">
+                      <Button
+                        variant={'popular' in plan && plan.popular ? 'primary' : 'outline'}
+                        fullWidth
+                        onClick={() => handleSubscribe(plan.id)}
+                      >
+                        Jetzt abonnieren
+                      </Button>
+                    </div>
                   </div>
                 </motion.div>
               ))}

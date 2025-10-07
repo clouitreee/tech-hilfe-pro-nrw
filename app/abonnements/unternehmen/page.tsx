@@ -104,13 +104,13 @@ export default function BusinessSubscriptionsPage() {
                     </div>
                   )}
 
-                  <div className="p-8 flex-grow flex flex-col">
+                  <div className="p-8 flex flex-col h-full">
                     {/* Plan Header */}
                     <div className="mb-6">
-                      <h3 className="text-2xl font-display font-bold text-primary mb-2">
+                      <h3 className="text-2xl font-display font-bold text-primary mb-2 min-h-[64px] flex items-center">
                         {plan.name}
                       </h3>
-                      <div className="flex items-baseline gap-2 mb-4">
+                      <div className="flex items-baseline gap-2 mb-4 min-h-[60px]">
                         {plan.price ? (
                           <>
                             <span className="text-5xl font-bold text-primary">
@@ -124,7 +124,7 @@ export default function BusinessSubscriptionsPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-neutral-600 text-sm leading-relaxed">
+                      <p className="text-neutral-600 text-sm leading-relaxed min-h-[80px]">
                         {plan.id === 'business_grundschutz' &&
                           'Der "MSP-Lite"-Einstieg für Selbstständige und Kleinstunternehmen. Wir sichern Ihre grundlegenden IT-Prozesse ab.'}
                         {plan.id === 'business_wachstum' &&
@@ -134,7 +134,7 @@ export default function BusinessSubscriptionsPage() {
                       </p>
                     </div>
 
-                    {/* Features */}
+                    {/* Features - flex-grow to push button to bottom */}
                     <div className="mb-8 flex-grow">
                       <ul className="space-y-3">
                         {plan.features.map((feature, i) => (
@@ -158,14 +158,16 @@ export default function BusinessSubscriptionsPage() {
                       </ul>
                     </div>
 
-                    {/* CTA Button */}
-                    <Button
-                      variant={'popular' in plan && plan.popular ? 'primary' : 'outline'}
-                      fullWidth
-                      onClick={() => handleSubscribe(plan.id)}
-                    >
-                      {'custom' in plan && plan.custom ? 'Angebot anfordern' : 'Jetzt abonnieren'}
-                    </Button>
+                    {/* CTA Button - always at bottom */}
+                    <div className="mt-auto">
+                      <Button
+                        variant={'popular' in plan && plan.popular ? 'primary' : 'outline'}
+                        fullWidth
+                        onClick={() => handleSubscribe(plan.id)}
+                      >
+                        {'custom' in plan && plan.custom ? 'Angebot anfordern' : 'Jetzt abonnieren'}
+                      </Button>
+                    </div>
                   </div>
                 </motion.div>
               ))}
