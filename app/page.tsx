@@ -51,11 +51,11 @@ export default function Home() {
                   Für Privatkunden und Unternehmen.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button href="/abonnements/privat" variant="primary" size="lg">
-                    Für Privatkunden
+                  <Button href="/kontakt" variant="primary" size="lg">
+                    Kostenloses Erstgespräch anfordern
                   </Button>
                   <Button href="/abonnements/unternehmen" variant="secondary" size="lg">
-                    Für Unternehmen
+                    Jetzt IT-Analyse starten
                   </Button>
                 </div>
               </motion.div>

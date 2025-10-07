@@ -52,13 +52,42 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
   if (!post) {
     return {
-      title: 'Artikel nicht gefunden',
+      title: 'Artikel nicht gefunden | Tech Hilfe Pro',
+      description: 'Der gesuchte Artikel konnte nicht gefunden werden.',
     };
   }
 
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: `${post.title} | Tech Hilfe Pro Blog`,
+    description: post.excerpt || `${post.title} - IT-Ratgeber von Tech Hilfe Pro aus Köln. Praktische Tipps und Anleitungen für Privatkunden und Kleinunternehmen in NRW.`,
+    keywords: [
+      post.category,
+      'IT-Ratgeber',
+      'Tech Hilfe Pro',
+      'IT-Support Köln',
+      'Computer-Tipps',
+      'IT-Beratung NRW',
+      'Digitalisierung',
+    ],
+    authors: [{ name: 'Tech Hilfe Pro Team' }],
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.date,
+      authors: ['Tech Hilfe Pro Team'],
+      locale: 'de_DE',
+      url: `https://techhilfepro.de/blog/${params.slug}`,
+      siteName: 'Tech Hilfe Pro',
+    },
+    alternates: {
+      canonical: `https://techhilfepro.de/blog/${params.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 
