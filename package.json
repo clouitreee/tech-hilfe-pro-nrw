@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
     "pages:build": "npx @cloudflare/next-on-pages@1",
     "preview": "npm run pages:build && wrangler pages dev",
     "deploy": "npm run pages:build && wrangler pages deploy"
@@ -31,6 +32,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9.37.0",
+    "eslint-config-next": "^15.5.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
