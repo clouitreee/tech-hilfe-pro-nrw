@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
       }
 
       case 'customer.subscription.updated': {
-        const subscription = event.data.object as Stripe.Subscription;
+        const subscription = event.data.object as any;
         
         const startDate = subscription.current_period_start
           ? new Date(subscription.current_period_start * 1000).toISOString()
@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
       }
 
       case 'customer.subscription.deleted': {
-        const subscription = event.data.object as Stripe.Subscription;
+        const subscription = event.data.object as any;
         
         await supabase
           .from('subscriptions')

@@ -1,7 +1,7 @@
 'use server';
 
 import { Resend } from 'resend';
-import { createLead } from '@/lib/supabase/client';
+import { supabaseAdmin } from '@/lib/server/supabase-admin';
 import { headers } from 'next/headers';
 
 // Only initialize Resend if API key is available
@@ -59,13 +59,20 @@ export async function submitContactForm(data: ContactFormData) {
     }
 
     // 3. Save to Supabase via service role
-    await createLead({
+    const db = supabaseAdmin();
+    const { error: dbError } = await db.from('leads').insert({
       name,
       email,
       phone,
       service_interest: serviceInterest,
       message,
+      status: 'new',
     });
+
+    if (dbError) {
+      console.error('Database error:', dbError);
+      return { success: false, error: 'Database error' };
+    }
 
     // 2. Send email notification via Resend
     if (resend) {

@@ -2,18 +2,20 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
+  // Generate nonce for CSP
+  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+
   const response = NextResponse.next();
 
-  // Content Security Policy - Restrictive with Calendly support
-  // Note: 'unsafe-inline' for scripts is required for Calendly and static generation
+  // Content Security Policy with nonce
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' https://assets.calendly.com",
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https:",
-    "connect-src 'self' https://api.calendly.com https://*.supabase.co https://api.stripe.com https://api.resend.com",
-    "frame-src 'self' https://calendly.com https://js.stripe.com",
     "font-src 'self' data:",
+    "connect-src 'self' https://api.calendly.com https://*.supabase.co https://api.stripe.com https://api.resend.com",
+    "frame-src https://calendly.com https://js.stripe.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -22,6 +24,7 @@ export function middleware(request: NextRequest) {
   ].join('; ');
 
   response.headers.set('Content-Security-Policy', csp);
+  response.headers.set('x-nonce', nonce);
 
   // Additional security headers
   response.headers.set('X-Frame-Options', 'SAMEORIGIN');
