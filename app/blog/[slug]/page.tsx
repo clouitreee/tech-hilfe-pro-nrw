@@ -6,6 +6,9 @@ import Navigation from '@/components/sections/Navigation';
 import Footer from '@/components/sections/Footer';
 import Button from '@/components/ui/Button';
 
+// Disable dynamic params - only prerender known slugs
+export const dynamicParams = false;
+
 // Get all blog post slugs for static generation
 export async function generateStaticParams() {
   const contentDir = path.join(process.cwd(), 'content/blog');
