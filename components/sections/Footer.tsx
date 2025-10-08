@@ -126,7 +126,7 @@ export default function Footer() {
                   />
                 </svg>
                 <span className="text-sm">
-                  [Bitte trage hier deine vollständige Geschäftsadresse ein]
+                  Schirmerstr. 7, 50823 Köln, Deutschland
                 </span>
               </li>
               <li>
