@@ -4,12 +4,13 @@ import { SUBSCRIPTION_PLANS } from '@/lib/stripe/client';
 
 export const runtime = 'edge';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-09-30.clover',
-});
-
 export async function POST(req: NextRequest) {
   try {
+    // Initialize Stripe inside handler for Cloudflare Workers compatibility
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+      apiVersion: '2024-06-20',
+    });
+
     const { planId } = await req.json();
 
     // Find the plan
@@ -35,21 +36,15 @@ export async function POST(req: NextRequest) {
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/erfolg?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/abonnements/${plan.target}`,
       metadata: {
-        planId: plan.id,
+        planId: planId,
       },
-      subscription_data: {
-        metadata: {
-          planId: plan.id,
-        },
-      },
-      locale: 'de',
     });
 
-    return NextResponse.json({ sessionId: session.id });
+    return NextResponse.json({ url: session.url });
   } catch (error) {
     console.error('Error creating checkout session:', error);
     return NextResponse.json(
-      { error: 'Failed to create checkout session' },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }
