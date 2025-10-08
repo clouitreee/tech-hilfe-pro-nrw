@@ -4,18 +4,20 @@ import { createClient } from '@supabase/supabase-js';
 
 export const runtime = 'edge';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-09-30.clover',
-});
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-
 export async function POST(req: NextRequest) {
+  // Initialize Stripe inside the handler for Cloudflare Workers compatibility
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: '2025-09-30.clover',
+  });
+
+  // Initialize Supabase inside the handler for Cloudflare Workers compatibility
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+
   const body = await req.text();
   const signature = req.headers.get('stripe-signature');
 
@@ -49,7 +51,7 @@ export async function POST(req: NextRequest) {
           );
 
           // Create subscription record in Supabase
-          const startDate = subscription.current_period_start 
+          const startDate = subscription.current_period_start
             ? new Date(subscription.current_period_start * 1000).toISOString()
             : new Date().toISOString();
           const endDate = subscription.current_period_end
@@ -60,18 +62,21 @@ export async function POST(req: NextRequest) {
             user_id: session.client_reference_id || session.customer as string,
             plan_id: session.metadata?.planId || 'unknown',
             stripe_subscription_id: subscription.id,
+            stripe_customer_id: session.customer as string,
             status: subscription.status,
-            start_date: startDate,
-            end_date: endDate,
+            current_period_start: startDate,
+            current_period_end: endDate,
           });
         }
         break;
       }
 
       case 'customer.subscription.updated': {
-        const subscription: any = event.data.object as Stripe.Subscription;
-
-        // Update subscription status in Supabase
+        const subscription = event.data.object as any;
+        
+        const startDate = subscription.current_period_start
+          ? new Date(subscription.current_period_start * 1000).toISOString()
+          : new Date().toISOString();
         const endDate = subscription.current_period_end
           ? new Date(subscription.current_period_end * 1000).toISOString()
           : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
@@ -80,38 +85,20 @@ export async function POST(req: NextRequest) {
           .from('subscriptions')
           .update({
             status: subscription.status,
-            end_date: endDate,
+            current_period_start: startDate,
+            current_period_end: endDate,
           })
           .eq('stripe_subscription_id', subscription.id);
         break;
       }
 
       case 'customer.subscription.deleted': {
-        const subscription = event.data.object as Stripe.Subscription;
-
-        // Update subscription status to canceled
+        const subscription = event.data.object as any;
+        
         await supabase
           .from('subscriptions')
-          .update({
-            status: 'canceled',
-            end_date: new Date().toISOString(),
-          })
+          .update({ status: 'canceled' })
           .eq('stripe_subscription_id', subscription.id);
-        break;
-      }
-
-      case 'invoice.payment_failed': {
-        const invoice: any = event.data.object as Stripe.Invoice;
-
-        if (invoice.subscription) {
-          // Update subscription status to past_due
-          await supabase
-            .from('subscriptions')
-            .update({
-              status: 'past_due',
-            })
-            .eq('stripe_subscription_id', invoice.subscription as string);
-        }
         break;
       }
 

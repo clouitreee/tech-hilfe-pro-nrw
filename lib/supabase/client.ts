@@ -5,17 +5,22 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 // Client for browser/public operations (read-only)
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export function getSupabase() {
+  return createClient(supabaseUrl, supabaseAnonKey);
+}
 
 // Server-side client with service role for write operations
-export const supabaseAdmin = supabaseServiceRoleKey
-  ? createClient(supabaseUrl, supabaseServiceRoleKey, {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false
-      }
-    })
-  : null;
+export function getSupabaseAdmin() {
+  if (!supabaseServiceRoleKey) {
+    return null;
+  }
+  return createClient(supabaseUrl, supabaseServiceRoleKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  });
+}
 
 // Database Types
 export type Lead = {
@@ -53,10 +58,10 @@ export type BlogPost = {
 
 // Helper functions
 export async function createLead(data: Omit<Lead, 'id' | 'created_at' | 'status'>) {
+  const supabaseAdmin = getSupabaseAdmin();
   if (!supabaseAdmin) {
     throw new Error('Supabase service role key not configured');
   }
-
   const { data: lead, error } = await supabaseAdmin
     .from('leads')
     .insert([{ ...data, status: 'new' }])
@@ -65,31 +70,4 @@ export async function createLead(data: Omit<Lead, 'id' | 'created_at' | 'status'
 
   if (error) throw error;
   return lead;
-}
-
-export async function getBlogPosts(published = true) {
-  let query = supabase
-    .from('blog_posts')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (published) {
-    query = query.eq('is_published', true);
-  }
-
-  const { data, error } = await query;
-  if (error) throw error;
-  return data;
-}
-
-export async function getBlogPostBySlug(slug: string) {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('slug', slug)
-    .eq('is_published', true)
-    .single();
-
-  if (error) throw error;
-  return data;
 }
