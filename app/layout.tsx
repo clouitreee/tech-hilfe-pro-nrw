@@ -70,11 +70,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="de" className={`${inter.variable} ${spaceGrotesk.variable} no-js`}>
       <head>
         <SchemaMarkup />
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.remove('no-js')" }} />
       </head>
-      <body className="font-sans">
+      <body className="font-sans min-h-screen antialiased">
         <SkipLink />
         {children}
         <CookieConsentBanner />
