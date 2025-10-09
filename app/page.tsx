@@ -52,12 +52,14 @@ export default function Home() {
           <div className="container-custom relative z-10 py-32">
             <div className="max-w-5xl mx-auto text-center">
               <motion.div
+                data-animate
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
                 {/* Badge */}
                 <motion.div
+                  data-animate
                   className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -96,6 +98,7 @@ export default function Home() {
 
                 {/* Contact Info */}
                 <motion.div
+                  data-animate
                   className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -112,6 +115,7 @@ export default function Home() {
 
               {/* Trust Indicators */}
               <motion.div
+                data-animate
                 className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
