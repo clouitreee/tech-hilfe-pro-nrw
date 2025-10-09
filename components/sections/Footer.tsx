@@ -1,5 +1,11 @@
+// MANUS: Implementación solicitada - Footer bereinigen auf Homepage
+"use client";
+
+import { usePathname } from "next/navigation";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
 
   return (
     <footer className="bg-primary text-white">
@@ -178,8 +184,9 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* MANUS: Implementación solicitada - Inhaber nur auf Unterseiten */}
             <p className="text-neutral-300 text-sm">
-              © {currentYear} Tech Hilfe Pro - Inhaber: José Carlos Martin Lache. Alle Rechte vorbehalten.
+              © {currentYear} Tech Hilfe Pro{pathname !== "/" && " - Inhaber: José Carlos Martin Lache"}. Alle Rechte vorbehalten.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <a href="/impressum" className="text-neutral-300 hover:text-secondary transition-colors">

@@ -72,29 +72,31 @@ export default function Home() {
                   <span className="text-white text-sm font-medium">Vertrauenswürdiger IT-Partner seit 2020</span>
                 </motion.div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 leading-tight">
-                  Ihre persönliche<br />
-                  <span className="text-secondary">IT-Hilfe</span> in NRW
+                {/* MANUS: Implementación solicitada - HERO-Text aktualisiert */}
+                <h1 className="text-balance text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                  Schneller IT-Support in Köln/Neuss – transparent, fair, vor Ort.
                 </h1>
-                <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto">
-                  Professioneller IT-Support für Privatkunden und Unternehmen.<br />
-                  <span className="text-white/80 text-lg">Sicher, verständlich und immer für Sie da.</span>
+                <p className="text-base md:text-lg lg:text-xl text-balance text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
+                  Für Privathaushalte und KMU bis 29 Mitarbeitende: WLAN & Netzwerk, PCs & Notebooks,
+                  Drucker & Scanner, Backups, Microsoft&nbsp;365 und mehr. Feste Preise, klare Abos, schnelle Hilfe per Termin.
                 </p>
                 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                  <Button href="/kontakt" variant="primary" size="lg">
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                    </svg>
-                    Kostenloses Erstgespräch
-                  </Button>
-                  <Button href="/abonnements" variant="secondary" size="lg">
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Abonnements ansehen
-                  </Button>
+                {/* MANUS: Implementación solicitada - CTAs immer sichtbar */}
+                <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+                  <a 
+                    href="/termin-buchen" 
+                    className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-base font-semibold bg-[#3BA9FF] text-white shadow-sm hover:shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#3BA9FF]"
+                    aria-label="Termin buchen"
+                  >
+                    Termin buchen
+                  </a>
+                  <a 
+                    href="/kontakt" 
+                    className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-base font-semibold border-2 border-white/30 text-white hover:bg-white/10 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
+                  >
+                    Kontakt
+                  </a>
                 </div>
 
                 {/* Contact Info */}
