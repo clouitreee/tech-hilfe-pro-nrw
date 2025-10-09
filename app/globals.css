@@ -233,11 +233,20 @@
   }
 }
 
-/* Progressive enhancement: content visible by default, animations when JS loads */
+/* MANUS: Implementación solicitada - Progressive enhancement: content visible by default */
+/* Sin JS, todo el contenido debe ser visible */
 html:not(.js) [data-animate],
-html:not(.js) .motion-safe {
+html:not(.js) .motion-safe,
+html:not(.js) .motion-start {
   opacity: 1 !important;
   transform: none !important;
+  visibility: visible !important;
+}
+
+/* Con JS, permitir animaciones normales */
+html.js [data-animate],
+html.js .motion-safe {
+  /* Las animaciones se controlan por Framer Motion */
 }
 
 /* Respect user's motion preferences */

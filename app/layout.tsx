@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
 import SchemaMarkup from "@/components/SchemaMarkup";
@@ -76,9 +77,14 @@ export default function RootLayout({
       <head>
         <SchemaMarkup />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body className="font-sans min-h-screen antialiased">
+        {/* MANUS: Implementación solicitada - Script beforeInteractive für .js Klasse */}
+        <Script 
+          id="detect-js" 
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} 
+        />
         {/* MANUS: Implementación solicitada - MotionProvider umhüllt alle Inhalte */}
         <MotionProvider>
           <SkipLink />
