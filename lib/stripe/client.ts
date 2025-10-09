@@ -21,6 +21,8 @@ export const SUBSCRIPTION_PLANS = {
     currency: 'EUR',
     interval: 'month',
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRIVATE_BASIS,
+    // MANUS: Implementación solicitada - Direkter Stripe-Link
+    stripeCheckoutUrl: 'https://buy.stripe.com/3cI5kw9SegnP2Me3cc',
     features: [
       'Proaktives Monitoring für 1 PC oder Mac',
       'Verwalteter Antivirenschutz',
@@ -37,6 +39,8 @@ export const SUBSCRIPTION_PLANS = {
     currency: 'EUR',
     interval: 'month',
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRIVATE_PREMIUM,
+    // MANUS: Implementación solicitada - Direkter Stripe-Link
+    stripeCheckoutUrl: 'https://buy.stripe.com/dRmaEQ2pMc7zdqS2xv',
     features: [
       'Alle Leistungen des Basis-Pakets',
       'Abdeckung für bis zu 4 Geräte',

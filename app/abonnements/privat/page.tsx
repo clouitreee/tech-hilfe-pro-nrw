@@ -97,7 +97,7 @@ export default function PrivateSubscriptionsPage() {
                   }`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }} // MANUS: Scroll-Animationen reaktivieren
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                 >
                   {'popular' in plan && plan.popular && (
@@ -150,14 +150,31 @@ export default function PrivateSubscriptionsPage() {
                     </div>
 
                     {/* CTA Button - always at bottom */}
+                    {/* MANUS: Implementación solicitada - Direkter Stripe-Link */}
                     <div className="mt-auto">
-                      <Button
-                        variant={'popular' in plan && plan.popular ? 'primary' : 'outline'}
-                        fullWidth
-                        onClick={() => handleSubscribe(plan.id)}
-                      >
-                        Jetzt abonnieren
-                      </Button>
+                      {'stripeCheckoutUrl' in plan && plan.stripeCheckoutUrl ? (
+                        <a
+                          href={plan.stripeCheckoutUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center justify-center w-full rounded-xl px-6 py-3 text-base font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                            'popular' in plan && (plan as any).popular
+                              ? 'bg-accent text-white hover:bg-accent/90 focus:ring-accent'
+                              : 'border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary'
+                          }`}
+                          aria-label={`Abonnieren – ${plan.price?.toFixed(2)} Euro pro Monat`}
+                        >
+                          Jetzt abonnieren – €{plan.price?.toFixed(2)}/Monat
+                        </a>
+                      ) : (
+                        <Button
+                          variant={'popular' in plan && (plan as any).popular ? 'primary' : 'outline'}
+                          fullWidth
+                          onClick={() => handleSubscribe(plan.id)}
+                        >
+                          Jetzt abonnieren
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -173,7 +190,7 @@ export default function PrivateSubscriptionsPage() {
               className="text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="heading-2 mb-4">Häufig gestellte Fragen</h2>
@@ -212,7 +229,7 @@ export default function PrivateSubscriptionsPage() {
                   className="bg-white rounded-xl p-6 shadow-soft"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                 >
                   <h3 className="text-lg font-display font-semibold text-primary mb-3">
@@ -227,7 +244,7 @@ export default function PrivateSubscriptionsPage() {
               className="text-center mt-12"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
               <p className="text-neutral-600 mb-4">

@@ -11,7 +11,8 @@ export default function Home() {
     <>
       <Navigation />
       
-      <main>
+      {/* MANUS: Implementación solicitada - ID für Skip Link */}
+      <main id="main-content">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary-light to-primary pt-20">
           {/* Background Pattern */}
@@ -160,7 +161,7 @@ export default function Home() {
               className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="heading-2 mb-4">Kennen Sie das?</h2>
@@ -210,7 +211,7 @@ export default function Home() {
               className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="heading-2 mb-4">Spezialisiert auf Ihre Bedürfnisse</h2>
@@ -289,7 +290,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">

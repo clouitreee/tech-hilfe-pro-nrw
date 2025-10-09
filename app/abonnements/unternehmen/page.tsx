@@ -104,7 +104,7 @@ export default function BusinessSubscriptionsPage() {
                   }`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                 >
                   {'popular' in plan && plan.popular && (
@@ -191,7 +191,7 @@ export default function BusinessSubscriptionsPage() {
               className="text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="heading-2 mb-4">Warum Tech Hilfe Pro NRW?</h2>
@@ -232,7 +232,7 @@ export default function BusinessSubscriptionsPage() {
                   className="text-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
                   <div className="text-5xl mb-4">{benefit.icon}</div>
@@ -255,7 +255,7 @@ export default function BusinessSubscriptionsPage() {
               className="text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="heading-2 mb-4">Häufig gestellte Fragen</h2>
@@ -289,7 +289,7 @@ export default function BusinessSubscriptionsPage() {
                   className="bg-white rounded-xl p-6 shadow-soft"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                 >
                   <h3 className="text-lg font-display font-semibold text-primary mb-3">
@@ -304,7 +304,7 @@ export default function BusinessSubscriptionsPage() {
               className="text-center mt-12"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
               <p className="text-neutral-600 mb-4">

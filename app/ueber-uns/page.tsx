@@ -37,7 +37,7 @@ export default function UeberUnsPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
               >
                 <h2 className="heading-2 mb-6 text-center">Unsere Mission</h2>
                 <p className="text-body mb-6">
@@ -67,7 +67,7 @@ export default function UeberUnsPage() {
               className="text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
             >
               <h2 className="heading-2 mb-4">Unsere Werte</h2>
               <p className="text-body max-w-2xl mx-auto">
@@ -81,7 +81,7 @@ export default function UeberUnsPage() {
                 className="bg-white p-8 rounded-xl shadow-soft text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.1 }}
               >
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -99,7 +99,7 @@ export default function UeberUnsPage() {
                 className="bg-white p-8 rounded-xl shadow-soft text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.2 }}
               >
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -117,7 +117,7 @@ export default function UeberUnsPage() {
                 className="bg-white p-8 rounded-xl shadow-soft text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.3 }}
               >
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -140,7 +140,7 @@ export default function UeberUnsPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
               >
                 <h2 className="heading-2 mb-6">Ihr Ansprechpartner</h2>
                 <div className="bg-white p-8 rounded-xl shadow-soft">
@@ -175,7 +175,7 @@ export default function UeberUnsPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
               >
                 <h2 className="heading-2 mb-6 text-white">Lokal in NRW</h2>
                 <p className="text-xl mb-6 text-white/90">

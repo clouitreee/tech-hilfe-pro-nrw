@@ -87,7 +87,7 @@ export default function FAQPage() {
                   key={catIndex}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 0.6, delay: catIndex * 0.1 }}
                 >
                   <h2 className="heading-2 mb-8 border-b-2 border-secondary pb-4">
@@ -129,7 +129,7 @@ export default function FAQPage() {
               className="text-center mt-16 p-8 bg-neutral-50 rounded-xl"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <h2 className="heading-2 mb-4">Ihre Frage wurde nicht beantwortet?</h2>

@@ -182,7 +182,7 @@ export default function ContactPage() {
               className="text-center mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="heading-2 mb-4">Unser Einsatzgebiet</h2>
@@ -195,7 +195,7 @@ export default function ContactPage() {
               className="bg-neutral-200 rounded-xl h-96 flex items-center justify-center"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
               <p className="text-neutral-500">

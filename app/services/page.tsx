@@ -47,7 +47,7 @@ export default function ServicesPage() {
                 className="bg-white p-8 rounded-xl shadow-soft"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.1 }}
               >
                 <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
@@ -67,7 +67,7 @@ export default function ServicesPage() {
                 className="bg-white p-8 rounded-xl shadow-soft"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.2 }}
               >
                 <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
@@ -87,7 +87,7 @@ export default function ServicesPage() {
                 className="bg-white p-8 rounded-xl shadow-soft"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.3 }}
               >
                 <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
@@ -107,7 +107,7 @@ export default function ServicesPage() {
                 className="bg-white p-8 rounded-xl shadow-soft"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.4 }}
               >
                 <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
@@ -127,7 +127,7 @@ export default function ServicesPage() {
                 className="bg-white p-8 rounded-xl shadow-soft"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.5 }}
               >
                 <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
@@ -147,7 +147,7 @@ export default function ServicesPage() {
                 className="bg-white p-8 rounded-xl shadow-soft"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ delay: 0.6 }}
               >
                 <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
@@ -171,7 +171,7 @@ export default function ServicesPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
             >
               <h2 className="heading-2 mb-6 text-white">
                 Bereit für professionelle IT-Unterstützung?
