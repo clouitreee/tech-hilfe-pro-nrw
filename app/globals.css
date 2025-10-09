@@ -233,9 +233,9 @@
   }
 }
 
-/* No-JS fallback: ensure content is visible even if JavaScript fails */
-.no-js [data-motion],
-.no-js .motion-safe {
+/* Progressive enhancement: content visible by default, animations when JS loads */
+html:not(.js) [data-animate],
+html:not(.js) .motion-safe {
   opacity: 1 !important;
   transform: none !important;
 }

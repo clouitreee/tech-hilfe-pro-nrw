@@ -70,10 +70,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${inter.variable} ${spaceGrotesk.variable} no-js`}>
+    <html lang="de" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <SchemaMarkup />
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.remove('no-js')" }} />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body className="font-sans min-h-screen antialiased">
         <SkipLink />
