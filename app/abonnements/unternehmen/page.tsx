@@ -168,14 +168,39 @@ export default function BusinessSubscriptionsPage() {
                     </div>
 
                     {/* CTA Button - always at bottom */}
+                    {/* MANUS: Implementación solicitada - Direkter Stripe-Link */}
                     <div className="mt-auto">
-                      <Button
-                        variant={'popular' in plan && plan.popular ? 'primary' : 'outline'}
-                        fullWidth
-                        onClick={() => handleSubscribe(plan.id)}
-                      >
-                        {'custom' in plan && plan.custom ? 'Angebot anfordern' : 'Jetzt abonnieren'}
-                      </Button>
+                      {('custom' in plan && plan.custom) ? (
+                        <Button
+                          variant="outline"
+                          fullWidth
+                          onClick={() => handleSubscribe((plan as any).id)}
+                        >
+                          Angebot anfordern
+                        </Button>
+                      ) : ('stripeCheckoutUrl' in plan && plan.stripeCheckoutUrl) ? (
+                        <a
+                          href={plan.stripeCheckoutUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center justify-center w-full rounded-xl px-6 py-3 text-base font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                            'popular' in plan && (plan as any).popular
+                              ? 'bg-accent text-white hover:bg-accent/90 focus:ring-accent'
+                              : 'border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary'
+                          }`}
+                          aria-label={`Abonnieren – ${plan.price} Euro pro Monat`}
+                        >
+                          Jetzt abonnieren – €{plan.price}/Monat
+                        </a>
+                      ) : (
+                        <Button
+                          variant={'popular' in plan && (plan as any).popular ? 'primary' : 'outline'}
+                          fullWidth
+                          onClick={() => handleSubscribe((plan as any).id)}
+                        >
+                          Jetzt abonnieren
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </motion.div>

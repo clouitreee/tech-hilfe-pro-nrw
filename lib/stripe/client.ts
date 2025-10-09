@@ -60,6 +60,8 @@ export const SUBSCRIPTION_PLANS = {
     currency: 'EUR',
     interval: 'month',
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUSINESS_GRUNDSCHUTZ,
+    // MANUS: Implementación solicitada - Direkter Stripe-Link
+    stripeCheckoutUrl: 'https://buy.stripe.com/fZufZa0hE8VncmO0pn8Zq03',
     features: [
       'Proaktives Monitoring für bis zu 5 Workstations/Server',
       'Business-Antivirus & Firewall-Management',
@@ -76,6 +78,8 @@ export const SUBSCRIPTION_PLANS = {
     currency: 'EUR',
     interval: 'month',
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUSINESS_WACHSTUM,
+    // MANUS: Implementación solicitada - Direkter Stripe-Link
+    stripeCheckoutUrl: 'https://buy.stripe.com/9B63coe8u5Jb72uc858Zq04',
     features: [
       'Alle Leistungen des Grundschutz-Pakets',
       'Abdeckung für bis zu 10 Workstations/Server',
