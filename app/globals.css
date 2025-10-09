@@ -262,3 +262,16 @@ html.js .motion-safe {
     scroll-behavior: auto;
   }
 }
+
+
+/* MANUS: Implementación solicitada - no-anim query parameter CSS */
+html.no-anim [data-animate],
+html.no-anim .motion-safe,
+html.no-anim .motion-start {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+

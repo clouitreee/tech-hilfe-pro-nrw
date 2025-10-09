@@ -85,6 +85,12 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} 
         />
+        {/* MANUS: Implementación solicitada - no-anim query parameter para debugging */}
+        <Script 
+          id="no-anim" 
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: "if (location.search.includes('noanim')) document.documentElement.classList.add('no-anim')" }} 
+        />
         {/* MANUS: Implementación solicitada - MotionProvider umhüllt alle Inhalte */}
         <MotionProvider>
           <SkipLink />
