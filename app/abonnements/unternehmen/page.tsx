@@ -30,10 +30,19 @@ export default function BusinessSubscriptionsPage() {
         body: JSON.stringify({ planId }),
       });
 
-      const { sessionId } = await response.json();
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to create checkout session');
+      }
+
+      const { url } = await response.json();
+      
+      if (!url) {
+        throw new Error('No checkout URL received');
+      }
       
       // Redirect to Stripe Checkout
-      window.location.href = `https://checkout.stripe.com/pay/${sessionId}`;
+      window.location.href = url;
     } catch (error) {
       console.error('Error creating checkout session:', error);
       alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');

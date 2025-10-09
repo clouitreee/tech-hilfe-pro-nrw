@@ -4,6 +4,7 @@ import "./globals.css";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import SkipLink from "@/components/SkipLink";
+import FloatingWhatsAppButton from "@/components/ui/FloatingWhatsAppButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
         <SkipLink />
         {children}
         <CookieConsentBanner />
+        <FloatingWhatsAppButton />
       </body>
     </html>
   );
