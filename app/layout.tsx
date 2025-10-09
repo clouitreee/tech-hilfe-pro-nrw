@@ -5,6 +5,8 @@ import CookieConsentBanner from "@/components/CookieConsentBanner";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import SkipLink from "@/components/SkipLink";
 import FloatingWhatsAppButton from "@/components/ui/FloatingWhatsAppButton";
+// MANUS: Implementación solicitada - MotionProvider für prefers-reduced-motion
+import MotionProvider from "@/components/providers/MotionProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,10 +79,13 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body className="font-sans min-h-screen antialiased">
-        <SkipLink />
-        {children}
-        <CookieConsentBanner />
-        <FloatingWhatsAppButton />
+        {/* MANUS: Implementación solicitada - MotionProvider umhüllt alle Inhalte */}
+        <MotionProvider>
+          <SkipLink />
+          {children}
+          <CookieConsentBanner />
+          <FloatingWhatsAppButton />
+        </MotionProvider>
       </body>
     </html>
   );

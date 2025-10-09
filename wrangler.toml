@@ -11,5 +11,11 @@ NEXT_PUBLIC_SUPABASE_URL = "https://nwydzdgthtzhapgokxaz.supabase.co"
 NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53eWR6ZGd0aHR6aGFwZ29reGF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzODc5NjAsImV4cCI6MjA3NDk2Mzk2MH0.6QZNGsSOr9ZQgIBN2V9l3tPwZZrn4K6pmDVgoktVVmA"
 NEXT_PUBLIC_CALENDLY_URL = "https://calendly.com/techhilfepro-info/30min"
 
+# MANUS: Implementación solicitada - Alle vars in preview duplizieren
 [env.preview.vars]
+NODE_VERSION = "22"
 NEXT_PUBLIC_SITE_URL = "https://mnus-thp-v1.pages.dev"
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = "pk_live_51SBihp3itcNs4WYnPmqUpNwkoI4BjPdenfVnQGJcvpih58zxwl8iSD1QIblU6h9T4pzx51DnSQQoNYg3Oj9GZM1f00Rl6Srj16"
+NEXT_PUBLIC_SUPABASE_URL = "https://nwydzdgthtzhapgokxaz.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53eWR6ZGd0aHR6aGFwZ29reGF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzODc5NjAsImV4cCI6MjA3NDk2Mzk2MH0.6QZNGsSOr9ZQgIBN2V9l3tPwZZrn4K6pmDVgoktVVmA"
+NEXT_PUBLIC_CALENDLY_URL = "https://calendly.com/techhilfepro-info/30min"

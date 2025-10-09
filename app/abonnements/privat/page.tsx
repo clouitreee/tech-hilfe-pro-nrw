@@ -170,7 +170,7 @@ export default function PrivateSubscriptionsPage() {
                         <Button
                           variant={'popular' in plan && (plan as any).popular ? 'primary' : 'outline'}
                           fullWidth
-                          onClick={() => handleSubscribe(plan.id)}
+                          onClick={() => handleSubscribe((plan as any).id)}
                         >
                           Jetzt abonnieren
                         </Button>

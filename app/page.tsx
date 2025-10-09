@@ -11,8 +11,8 @@ export default function Home() {
     <>
       <Navigation />
       
-      {/* MANUS: Implementación solicitada - ID für Skip Link */}
-      <main id="main-content">
+      {/* MANUS: Implementación solicitada - ID auf #main vereinheitlicht */}
+      <main id="main">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary-light to-primary pt-20">
           {/* Background Pattern */}
