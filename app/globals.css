@@ -11,16 +11,17 @@
     scroll-behavior: smooth;
   }
 
+  /* MANUS: Implementación solicitada - WCAG AA Kontrast gehärtet */
   body {
     background-color: white;
-    color: rgb(31 41 55);
+    color: #0f172a; /* text-slate-900 für besseren Kontrast */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #0A2A4E;
+    color: #0b1324; /* Noch dunkler für optimale Lesbarkeit */
     font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
     font-weight: 600;
   }

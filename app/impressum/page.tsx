@@ -22,10 +22,11 @@ export default function ImpressumPage() {
 
               <div className="prose prose-lg max-w-none text-neutral-700">
                 <h2 className="text-primary">Angaben gemäß § 5 TMG</h2>
-                <p>
+                {/* MANUS: Implementación solicitada - Platzhalter entschärft */}
+                <p className="text-slate-700">
                   Tech Hilfe Pro<br />
                   Inhaber: José Carlos Martin Lache<br />
-                  [Bitte trage hier deine vollständige Geschäftsadresse ein]
+                  [Adresse wird derzeit aktualisiert. Inhalt folgt zeitnah.]
                 </p>
 
                 <h2 className="text-primary">Kontakt</h2>
@@ -41,9 +42,10 @@ export default function ImpressumPage() {
                 </p>
 
                 <h2 className="text-primary">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-                <p>
+                {/* MANUS: Implementación solicitada - Platzhalter entschärft */}
+                <p className="text-slate-700">
                   José Carlos Martin Lache<br />
-                  [Bitte trage hier deine vollständige Geschäftsadresse ein]
+                  [Adresse wird derzeit aktualisiert. Inhalt folgt zeitnah.]
                 </p>
 
                 <h2 className="text-primary">Haftungsausschluss (Disclaimer)</h2>
