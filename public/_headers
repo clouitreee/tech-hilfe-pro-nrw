@@ -1,0 +1,9 @@
+# MANUS: Implementación solicitada - Cloudflare Pages Headers
+# Headers temporales para asegurar que CSP no bloquea estilos/scripts de Next.js
+# Después de verificar que funciona, afinar la política
+
+/*
+  Cache-Control: no-store
+  Content-Security-Policy: default-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src *; frame-src https:
+  X-Content-Type-Options: nosniff
+

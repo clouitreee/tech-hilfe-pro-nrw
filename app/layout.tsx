@@ -72,11 +72,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // MANUS: Implementación solicitada - Clases SSR para garantizar visibilidad sin scripts inline
   return (
-    <html lang="de" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="de" className={`js hard-visible ${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <SchemaMarkup />
         <link rel="manifest" href="/manifest.webmanifest" />
+        {/* MANUS: Implementación solicitada - CSS crítico externo para visibilidad garantizada */}
+        <link rel="stylesheet" href="/hard-visible.css" />
       </head>
       <body className="font-sans min-h-screen antialiased">
         {/* MANUS: Implementación solicitada - HARD-SOLUTION: JS + hard-visible classes vor Hydration */}

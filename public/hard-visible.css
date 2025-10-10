@@ -1,0 +1,47 @@
+/* MANUS: Implementación solicitada — capa nuclear de visibilidad */
+/* Este CSS externo garantiza visibilidad incluso si globals.css falla o se ve afectado por purge/CSP */
+
+html.hard-visible,
+html.hard-visible body {
+  color: #0f172a !important; /* slate-900 */
+  background: #ffffff !important;
+}
+
+/* Visibilidad forzada para TODO */
+html.hard-visible * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
+
+/* Desactivar escondites comunes */
+html.hard-visible [hidden] {
+  display: initial !important;
+}
+
+html.hard-visible .opacity-0,
+html.hard-visible [class*="opacity-0"] {
+  opacity: 1 !important;
+}
+
+html.hard-visible .invisible,
+html.hard-visible [class*="invisible"] {
+  visibility: visible !important;
+}
+
+html.hard-visible .text-transparent,
+html.hard-visible [class*="text-transparent"] {
+  color: #0f172a !important;
+}
+
+/* Para debug de accesibilidad: hacer visible lo SR-only en modo hard */
+html.hard-visible .sr-only {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
