@@ -275,3 +275,53 @@ html.no-anim .motion-start {
   transition: none !important;
 }
 
+
+
+/* MANUS: Implementación solicitada - HARD-SOLUTION: Global Visibility Layer */
+@layer base {
+  /* Basis: sichtbarer Text/Hintergrund */
+  html.hard-visible,
+  html.hard-visible body {
+    color: #0f172a !important; /* slate-900 */
+    background: #ffffff !important;
+  }
+
+  /* Sichtbarkeit niemals gate-en */
+  html.hard-visible * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  /* Versteckte Attribute sichtbar machen */
+  html.hard-visible [hidden] {
+    display: initial !important;
+  }
+
+  /* Häufige Versteck-Klassen neutralisieren */
+  html.hard-visible .opacity-0,
+  html.hard-visible [class*="opacity-0"] {
+    opacity: 1 !important;
+  }
+
+  html.hard-visible .invisible,
+  html.hard-visible [class*="invisible"] {
+    visibility: visible !important;
+  }
+
+  html.hard-visible .text-transparent,
+  html.hard-visible [class*="text-transparent"] {
+    color: #0f172a !important;
+  }
+
+  /* SR-only im Diagnosemodus lesbar machen */
+  html.hard-visible .sr-only {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+}
+

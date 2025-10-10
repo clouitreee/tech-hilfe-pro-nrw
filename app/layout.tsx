@@ -79,13 +79,13 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body className="font-sans min-h-screen antialiased">
-        {/* MANUS: Implementación solicitada - Script beforeInteractive für .js Klasse */}
+        {/* MANUS: Implementación solicitada - HARD-SOLUTION: JS + hard-visible classes vor Hydration */}
         <Script 
-          id="detect-js" 
+          id="hard-visible" 
           strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} 
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js','hard-visible')" }} 
         />
-        {/* MANUS: Implementación solicitada - no-anim query parameter para debugging */}
+        {/* MANUS: Implementación solicitada - no-anim query parameter für Notfälle */}
         <Script 
           id="no-anim" 
           strategy="beforeInteractive"
